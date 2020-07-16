@@ -186,8 +186,8 @@ def train_triplet(xt, xv, xq, args, results_file_name):
         with open(results_file_name, "a") as rfile:
             rfile.write("\n")
             rfile.write(
-                "Triplet, DATABASE %s, xt_size = %d, batch_size = %d, lat_dim = %d, k = %d, lam_u = %.5f, r_pos = %d, r_neg = %d , dint = %d, optim %s, margin = %.5f \n" %
-                (args.database, xt.shape[0], args.batch_size, args.dout, val_k, lambda_uniform, r_pos, r_neg, dint, args.optim, margin))
+                "Triplet, DATABASE %s, xt_size = %d, batch_size = %d, lat_dim = %d, k = %d, lam_u = %.5f, r_pos = %d, r_neg = %d , dint = %d, margin = %.5f \n" %
+                (args.database, xt.shape[0], args.batch_size, args.dout, val_k, lambda_uniform, r_pos, r_neg, dint, margin))
 
             log = all_logs[-1]
             rfile.write(
