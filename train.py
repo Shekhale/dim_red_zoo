@@ -5,6 +5,7 @@ import numpy as np
 import torch
 
 from triplet import train_triplet
+from acai import train_acai
 from support_func import  sanitize
 
 if __name__ == '__main__':
@@ -26,7 +27,8 @@ if __name__ == '__main__':
     aa("--val_freq", type=int, default=10,
        help="frequency of validation calls")
     aa("--print_results", type=int, default=0)
-    aa("--save", type=str, default="not")
+    aa("--batch_size", type=int, default=64)
+    aa("--epochs", type=int, default=40)
 
     args = parser.parse_args()
 
@@ -62,5 +64,7 @@ if __name__ == '__main__':
 
     if args.method == "triplet":
         train_triplet(xt, xv, xq, args, results_file_name)
+    else if args.method == "acai":
+        train_acai(xt, xv, xq, args, results_file_name)
     else:
         print("Select an available method")
