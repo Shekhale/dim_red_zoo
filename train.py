@@ -1,12 +1,14 @@
 from __future__ import division
-from data import load_dataset
 import argparse
 import numpy as np
 import torch
 
 from triplet import train_triplet
 from acai import train_acai
+from umap import train_umap
+
 from support_func import  sanitize
+from data import load_dataset
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -64,7 +66,9 @@ if __name__ == '__main__':
 
     if args.method == "triplet":
         train_triplet(xt, xv, xq, args, results_file_name)
-    else if args.method == "acai":
+    elif args.method == "acai":
         train_acai(xt, xv, xq, args, results_file_name)
+    elif args.method == "umap":
+        train_umap(xt, xv, xq, args, results_file_name)
     else:
         print("Select an available method")

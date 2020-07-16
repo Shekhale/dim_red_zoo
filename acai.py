@@ -3,16 +3,13 @@ from lib.data import load_dataset
 import time
 import argparse
 import numpy as np
-from torch import nn, optim
-from lib.metrics import get_nearestneighbors, sanitize
-from lib.net import Normalize
-
 import torch.nn.functional as F
 import torch
 
 
 from support_func import loss_permutation, loss_top_1_in_lat_top_k, get_weights,\
-                         repeat, pairwise_NNs_inner, forward_pass_enc
+                         repeat, pairwise_NNs_inner, forward_pass_enc,\
+                         get_nearestneighbors, sanitize, Normalize
 
 
 def swap_halves(x):
