@@ -6,6 +6,7 @@ import torch
 from triplet import train_triplet
 from acai import train_acai
 from umap import train_umap
+from tsne import train_tsne
 
 from support_func import  sanitize
 from data import load_dataset
@@ -31,6 +32,8 @@ if __name__ == '__main__':
     aa("--print_results", type=int, default=0)
     aa("--batch_size", type=int, default=64)
     aa("--epochs", type=int, default=40)
+    aa("--lr_schedule", type=str, default="0.1,0.1,0.05,0.01")
+    aa("--momentum", type=float, default=0.9)
 
     args = parser.parse_args()
 
@@ -70,5 +73,7 @@ if __name__ == '__main__':
         train_acai(xt, xv, xq, args, results_file_name)
     elif args.method == "umap":
         train_umap(xt, xv, xq, args, results_file_name)
+    elif args.method == "tsne":
+        train_tsne(xt, xv, xq, args, results_file_name)
     else:
         print("Select an available method")
