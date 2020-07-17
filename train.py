@@ -7,6 +7,7 @@ from triplet import train_triplet
 from acai import train_acai
 from umap import train_umap
 from tsne import train_tsne
+from vae import train_vae
 
 from support_func import  sanitize
 from data import load_dataset
@@ -75,5 +76,7 @@ if __name__ == '__main__':
         train_umap(xt, xv, xq, args, results_file_name)
     elif args.method == "tsne":
         train_tsne(xt, xv, xq, args, results_file_name)
+    elif args.method == "vae":
+        train_vae(xt, xv, xq, args, results_file_name)
     else:
         print("Select an available method")
